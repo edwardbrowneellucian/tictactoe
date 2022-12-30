@@ -6,10 +6,13 @@ class Board extends React.Component{
  
 
     renderSquare(i) {
+        const winner = (this.props.winsquares ? this.props.winsquares.includes(i) : false) ;
+        const myClass = (winner ? "square_win": "square");
+
         return (
         <Square 
+        myClass={myClass}
         value={this.props.squares[i]} 
-        
         onClick={() => this.props.onClick(i)}
         />
         );
@@ -18,6 +21,7 @@ class Board extends React.Component{
     render() {
 
         return (
+         
           <div>
             <div className="board-row">
               {this.renderSquare(0)}
